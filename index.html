@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kakaku tersayang</title>
+<style>
+*{box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+body{margin:0;background:#f8f7f4;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{max-width:420px;width:100%;background:#fff;border-radius:20px;padding:32px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.08);border:1px solid #eee}
+h1{font-size:22px;margin:0;color:#1a1a1a}
+p{color:#666;font-size:15px;line-height:1.6}
+.reason{background:#f8f7f4;border-radius:14px;padding:16px;text-align:left;font-size:14px;color:#333;margin:20px 0}
+.btn-area{position:relative;height:120px;margin-top:10px}
+button{padding:14px 22px;border:0;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer}
+.btn-yes{background:#1a1a1a;color:white;width:100%}
+.btn-no{background:#e5e5e5;color:#333;position:absolute;left:0;top:60px;transition:all .15s ease;white-space:nowrap}
+small{color:#999;font-size:12px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Halo Kakaku tercantik.</h1>
+<p>ehemm, alamak bantuk guweh🤧, ummu yg cantik yang imut yang manusia paling cantik nan sabar adakah sedikit rezeki untuk adikmu tersayang ini🫣.</p>
+<div class="reason">
+<b>Keperluan:</b><br>
+adakah🤔.<br><br>
+Makasih banyak kakaku tersayanggg😘.
+<br><br>
+— Adikmu
+</div>
+<div class="btn-area" id="area">
+<button class="btn-yes" onclick="yes()">Boleh, kalau untuk adikku😘</button>
+<button class="btn-no" id="noBtn" onmouseover="pindah()" ontouchstart="pindah()" onclick="pindah()">Maaf, belum bisa</button>
+</div>
+<small>Klik salah satu ya kakakku tersayang😘.</small>
+</div>
+<script>
+function pindah(){
+  const btn = document.getElementById('noBtn');
+  const area = document.getElementById('area');
+  const maxX = area.clientWidth - btn.offsetWidth;
+  const maxY = 70;
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+  btn.style.left = x + 'px';
+  btn.style.top = y + 'px';
+}
+function yes(){
+  const text = "sitok la ambek";
+  // GANTI NOMOR WA LU DI SINI
+  window.open(`https://wa.me/6285393659857?text=${encodeURIComponent(text)}`, '_blank');
+}
+</script>
+</body>
+</html>
