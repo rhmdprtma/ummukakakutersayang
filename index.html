@@ -6,11 +6,12 @@
 <title>Untuk Kakakku tersayang</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#ffb6d9 0%,#ffffff 45%,#a5d8ff 100%);overflow:hidden}
+html,body{height:auto}
+body{margin:0;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:20px 20px 40px;font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#ffb6d9 0%,#ffffff 45%,#a5d8ff 100%);overflow-y:auto;overflow-x:hidden}
 .blob{position:fixed;border-radius:50%;filter:blur(50px);opacity:.7;z-index:0}
 .b1{width:220px;height:220px;background:#ff8fbc;top:-40px;left:-40px}
 .b2{width:240px;height:240px;background:#7ec8ff;bottom:-60px;right:-40px}
-.card{position:relative;z-index:2;max-width:430px;width:100%;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:28px;padding:32px 26px;text-align:center;box-shadow:0 20px 50px rgba(150,80,150,.25);border:2px solid #fff;min-height:520px;overflow:hidden}
+.card{position:relative;z-index:2;max-width:430px;width:100%;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:28px;padding:32px 26px;text-align:center;box-shadow:0 20px 50px rgba(150,80,150,.25);border:2px solid #fff;min-height:auto;overflow:visible;margin:auto}
 .hidden{display:none}
 .envelope{font-size:90px;animation:float 2s ease-in-out infinite;cursor:pointer}
 .envelope-besar{font-size:110px;animation:float 2s ease-in-out infinite}
@@ -28,37 +29,35 @@ p{color:#555;font-size:15px;line-height:1.7;margin:0}
 .btn-no{display:block;margin:14px auto 0;background:#eee;color:#333;padding:12px 22px;font-size:14px;white-space:nowrap;border-radius:999px;border:0;font-weight:700;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.15);transition:all .2s ease;position:relative;z-index:10}
 .btn-no.kabur{position:absolute;margin:0;left:50%;transform:translateX(-50%)}
 small{color:#999;font-size:12px}
-.fade{animation:fade .5s ease}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .hearts{font-size:28px;letter-spacing:8px}
 .count{margin-top:18px;background:#f0f7ff;border:1px solid #cdeaff;padding:12px;border-radius:14px;font-size:13px;color:#4a7ab5;font-weight:700}
 .count b{font-size:20px;color:#ff5da2}
 .chatbox{background:#f8faff;border:1px solid #e0eaff;border-radius:18px;padding:16px;text-align:left;margin-top:18px}
 .chatbox p{font-size:14px}
-.surat{background:linear-gradient(180deg,#fff0f7,#eff8ff);border:1px solid #ffd1e8;border-radius:20px;padding:22px;text-align:center;margin:20px 0;overflow:hidden}
+.surat{background:linear-gradient(180deg,#fff0f7,#eff8ff);border:1px solid #ffd1e8;border-radius:20px;padding:22px;text-align:center;margin:20px 0}
 .surat h2{font-size:19px;margin:0 0 10px;color:#2b2b2b}
 .surat h2 span{background:linear-gradient(90deg,#ff5da2,#4aa8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .surat p{font-size:14.5px;line-height:1.8;color:#444}
-/* SURAT MUNCUL NYICIL DARI ATAS KE BAWAH */
-.baris{opacity:0;transform:translateY(-15px);transition:all .6s ease}
-.baris.muncul{opacity:1;transform:translateY(0)}
+/* SETIAP HALAMAN MUNCUL DARI ATAS KE BAWAH, ABIS ITU DIEM KELIATAN SEMUA */
+.masuk{animation:masukAtas .7s ease forwards}
+@keyframes masukAtas{from{opacity:0;transform:translateY(-50px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 <div class="blob b1"></div><div class="blob b2"></div>
 
-<!-- 0. PEMBUKAAN BARU - AMPLOP DULU -->
-<div class="card" id="cover" style="min-height:auto;overflow:visible">
+<!-- 0. PEMBUKAAN -->
+<div class="card masuk" id="cover">
   <div class="badge">✦ ADA SURAT MASUK ✦</div>
   <div class="envelope-besar" style="margin:28px 0 10px">💌</div>
   <h1>Ada Surat<br><span>Buat Kakakku Tersayang</span></h1>
-  <p style="margin-top:10px">Dari adikmu yang paling ganteng di dunia ini🤓<br>urusan paling penting dari segala penting...</p>
+  <p style="margin-top:10px">Dari adikmu yang paling sayang sama kakak 🥹<br>Jangan di skip ya kak, penting nih...</p>
   <button class="btn btn-open" onclick="bukaCover()">Buka Suratnya 💌</button>
-  <p style="margin-top:16px;font-size:12px;color:#aaa">Klik amplopnya boss 🫣</p>
+  <p style="margin-top:16px;font-size:12px;color:#aaa">Klik amplopnya kak 🫣</p>
 </div>
 
-<!-- 1. BASA BASI - KATA-KATA LU -->
-<div class="card hidden" id="opening" style="min-height:auto;overflow:visible">
+<!-- 1. BASA BASI -->
+<div class="card hidden" id="opening">
   <div class="badge">✦ ADA PESAN MASUK ✦</div>
   <div class="envelope" style="margin-top:18px">💌</div>
   <h1>Halo <span>Kakaku Tercantik.</span></h1>
@@ -77,32 +76,32 @@ small{color:#999;font-size:12px}
   <p style="margin-top:14px;font-size:12px;color:#aaa">Dari: Adikmu yang tersayang • 🎵 </p>
 </div>
 
-<!-- 1B. BALASAN - KATA-KATA LU -->
-<div class="card hidden" id="balasan" style="min-height:auto;overflow:visible">
+<!-- 1B. BALASAN -->
+<div class="card hidden" id="balasan">
   <div class="hearts">💖</div>
   <h1 id="judulBalasan">Syukurlah...</h1>
   <p id="teksBalasan" style="margin-top:10px"></p>
   <button class="btn btn-open" onclick="bukaSurat()">Lanjut, ada yang mau adikmu omongin →</button>
 </div>
 
-<!-- 2. ISI - SURAT MUNCUL NYICIL DARI ATAS KE BAWAH -->
+<!-- 2. SURAT - KELIATAN SEMUA, CUMA MUNCULNYA DARI ATAS -->
 <div class="card hidden" id="main">
-  <p class="baris" id="b0" style="font-size:12px;letter-spacing:2px;color:#aaa">SURAT KE-1 • DIBUKA</p>
+  <p style="font-size:12px;letter-spacing:2px;color:#aaa">SURAT KE-1 • DIBUKA</p>
   <div class="surat">
-    <h2 class="baris" id="b1">Surat Untuk <span>Ummu 💌</span></h2>
-    <p class="baris" id="b2">ehem, alamak bantuk lagi guweh 🤧, ummu yg cantik yang imut yang tersyaang manusia paling cantik nan sabar adakah sedikit rezeki untuk adikmu tersayang ini.</p>
-    <p class="baris" id="b3" style="margin-top:14px">Untuk Ummu yang paling cantik, paling baik, paling imut, paling sabar, paling pengertian, paling penyayang sedunia. Yang kalau senyum tuh dunia langsung cerah. Yang hatinya lembut banget.</p>
-    <p class="baris" id="b4" style="margin-top:14px">Pokoknya Ummu adalah kakakku terbaik yang pernah ada intinya yang paling paling 😛😛😛💖. Jadi... adakah sedikit rezeki untuk adikmu yang tersayang ini?</p>
+    <h2>Surat Untuk <span>Ummu 💌</span></h2>
+    <p>ehem, alamak bantuk lagi guweh 🤧, ummu yg cantik yang imut yang tersyaang manusia paling cantik nan sabar adakah sedikit rezeki untuk adikmu tersayang ini.<br><br>
+    Untuk Ummu yang paling cantik, paling baik, paling imut, paling sabar, paling pengertian, paling penyayang sedunia. Yang kalau senyum tuh dunia langsung cerah. Yang hatinya lembut banget.<br><br>
+    Pokoknya Ummu adalah kakakku terbaik yang pernah ada intinya yang paling paling 😛😛😛💖. Jadi... adakah sedikit rezeki untuk adikmu yang tersayang ini?</p>
   </div>
-  <div class="btn-area baris" id="b5">
+  <div class="btn-area">
     <button class="btn btn-yes" onclick="yes()">Boleh, kalau untuk adikku tersayang 🥰</button>
     <button class="btn-no" id="noBtn" onclick="pindah()">Maaf, belum bisa</button>
   </div>
-  <small class="baris" id="b6" style="display:block;margin-top:20px">Klik salah satu ya kakakku tersayang 🫣.</small>
+  <small style="display:block;margin-top:20px">Klik salah satu ya kakakku tersayang 🫣.</small>
 </div>
 
-<!-- 3. MAKASIH - KATA-KATA LU -->
-<div class="card hidden" id="thanks" style="min-height:auto;overflow:visible">
+<!-- 3. MAKASIH -->
+<div class="card hidden" id="thanks">
   <div class="hearts">💖💙🤍</div>
   <h1>Makasih banyak<br><span>kakaku tersayanggg 😛.</span></h1>
   <p style="margin-top:10px">Kakak terbaik sedunia.<br>kamu lah oenyelamat hidupku makasih bosskuu semoga panjang umur boskuu maksih banggg ohh iyaa banggg🖐️.</p>
@@ -116,15 +115,20 @@ small{color:#999;font-size:12px}
 let step = 0;
 const ejekan = ["Eh, gak kena 😝","Yakin mau nolak?","Ayo lah kangjeng ratu 🫣","Waduh kabur lagi!","Gak bisa nolak nich😛","Ummu imoet, tekan aja bosku😜","Kecepetan kah?","Coba lagi kumkum🤔","Udah lah, pencet yang pink aja","Capek gak ngejar-ngejar? 😂"];
 const pola = [{left:'62%',top:'45px'},{left:'5%',top:'230px'},{left:'55%',top:'430px'},{left:'10%',top:'450px'},{left:'65%',top:'180px'},{left:'5%',top:'50px'},{left:'35%',top:'470px'},{left:'70%',top:'300px'},{left:'5%',top:'340px'},{left:'40%',top:'15px'}];
+function tampil(id){
+  const el=document.getElementById(id);
+  el.classList.remove('hidden');
+  el.classList.remove('masuk'); void el.offsetWidth; el.classList.add('masuk');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 function bukaCover(){
   document.getElementById('cover').classList.add('hidden');
-  const o=document.getElementById('opening'); o.classList.remove('hidden'); o.classList.add('fade');
+  tampil('opening');
   document.getElementById('lagu').play().catch(()=>{});
 }
 function kabar(pilihan){
   document.getElementById('opening').classList.add('hidden');
-  const b = document.getElementById('balasan');
-  b.classList.remove('hidden'); b.classList.add('fade');
+  tampil('balasan');
   if(pilihan.includes('Baik')){
     document.getElementById('judulBalasan').innerText = "Syukurlah kalau kanjeng ratu baik baik sahaja 😇";
     document.getElementById('teksBalasan').innerText = "Alhamdulillah kalau kakakku baik. Adikmu ini juga ikut seneng dengernya. Semoga terus sehat dan rezekinya lancar 😋. Eh, ngomong-ngomong... ada yang mau adikmu omongin nih, penting dikit.";
@@ -138,12 +142,7 @@ function kabar(pilihan){
 }
 function bukaSurat(){
   document.getElementById('balasan').classList.add('hidden');
-  const m = document.getElementById('main');
-  m.classList.remove('hidden'); m.classList.add('fade');
-  // SURAT MUNCUL NYICIL ATAS KE BAWAH
-  for(let i=0;i<=6;i++){
-    setTimeout(()=>{ document.getElementById('b'+i).classList.add('muncul'); }, i*450);
-  }
+  tampil('main');
 }
 function pindah(){
   const btn = document.getElementById('noBtn');
@@ -154,8 +153,7 @@ function pindah(){
 }
 function yes(){
   document.getElementById('main').classList.add('hidden');
-  const t = document.getElementById('thanks');
-  t.classList.remove('hidden'); t.classList.add('fade');
+  tampil('thanks');
   let s = 5; const el = document.getElementById('angka');
   const timer = setInterval(()=>{
     s--; if(s>0){el.innerText=s;} else { clearInterval(timer); const text="sitok la ambek"; window.location.href=`https://wa.me/6285393659857?text=${encodeURIComponent(text)}`; }
