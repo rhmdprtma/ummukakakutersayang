@@ -26,9 +26,7 @@ p{color:#555;font-size:15px;line-height:1.7;margin:0}
 .btn-kabar:active{background:#fff0f7}
 .btn-area{margin-top:18px}
 .btn-yes{background:linear-gradient(90deg,#ff5da2,#4aa8ff);color:#fff;box-shadow:0 10px 20px rgba(255,93,162,.4)}
-/* TOMBOL MAAF - AWALNYA BERWARNA, PAS KABUR BISA KE MANA-MANA */
 .btn-no{display:block;margin:14px auto 0;background:linear-gradient(90deg,#ffe066,#ff9f43);color:#7a2a00;padding:12px 22px;font-size:14px;white-space:nowrap;border-radius:999px;border:2px solid #fff;font-weight:800;cursor:pointer;box-shadow:0 8px 18px rgba(255,159,67,.45);transition:all .18s ease;position:relative;z-index:20;touch-action:manipulation}
-/* PAS KABUR, PATOKANNYA KARTU (BUKAN AREA TOMBOL), JADI BISA KE ATAS-TENGAH-BAWAH */
 .btn-no.kabur{position:absolute;margin:0;left:50%;transform:translateX(-50%);z-index:50}
 small{color:#999;font-size:12px}
 .hearts{font-size:28px;letter-spacing:8px}
@@ -40,7 +38,6 @@ small{color:#999;font-size:12px}
 .surat h2{font-size:19px;margin:0 0 10px;color:#2b2b2b}
 .surat h2 span{background:linear-gradient(90deg,#ff5da2,#4aa8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .surat p{font-size:14.5px;line-height:1.8;color:#444}
-/* SETIAP HALAMAN MUNCUL DARI ATAS KE BAWAH, ABIS ITU DIEM KELIATAN SEMUA */
 .masuk{animation:masukAtas .7s ease forwards}
 @keyframes masukAtas{from{opacity:0;transform:translateY(-50px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -48,7 +45,6 @@ small{color:#999;font-size:12px}
 <body>
 <div class="blob b1"></div><div class="blob b2"></div>
 
-<!-- 0. PEMBUKAAN -->
 <div class="card masuk" id="cover">
   <div class="badge">✦ ADA SURAT MASUK ✦</div>
   <div class="envelope-besar" style="margin:28px 0 10px">💌</div>
@@ -58,7 +54,6 @@ small{color:#999;font-size:12px}
   <p style="margin-top:16px;font-size:12px;color:#aaa">Klik amplopnya boss 🫣</p>
 </div>
 
-<!-- 1. BASA BASI -->
 <div class="card hidden" id="opening">
   <div class="badge">✦ ADA PESAN MASUK ✦</div>
   <div class="envelope" style="margin-top:18px">💌</div>
@@ -71,14 +66,13 @@ small{color:#999;font-size:12px}
     Jangan capek-capek ya kakakku tersayang, jaga kesehatan😘.<br><br>
     Adikmu ini hanya mengingatkam saja soal kesehetan lu karna adikmu ini sangat sayang kepada kakak satu-satunya nya yang guwe sayangg😛.</p>
   </div>
-  <p style="margin-top:16px;font-weight:700;color:#2b2b2b">Gimana harinya boskuu🫣?</p>
+  <p style="margin-top:16px;font-weight:700;color:#2b2b2b">Gimana hari ini boskuu🔥?</p>
   <button class="btn btn-kabar" onclick="kabar('Baik, alhamdulillah 😊')">Baik, alhamdulillah 😊</button>
   <button class="btn btn-kabar" onclick="kabar('Capek banget hari ini 🥲')">Capek banget hari ini 🥲</button>
   <button class="btn btn-kabar" onclick="kabar('Biasa aja, kenapa? 🤨')">Biasa aja, kenapa? 🤨</button>
   <p style="margin-top:14px;font-size:12px;color:#aaa">Dari: Adikmu yang tersayang • 🎵 </p>
 </div>
 
-<!-- 1B. BALASAN -->
 <div class="card hidden" id="balasan">
   <div class="hearts">💖</div>
   <h1 id="judulBalasan">Syukurlah...</h1>
@@ -86,7 +80,6 @@ small{color:#999;font-size:12px}
   <button class="btn btn-open" onclick="bukaSurat()">Lanjut, ada yang mau adikmu omongin →</button>
 </div>
 
-<!-- 2. SURAT - KELIATAN SEMUA, CUMA MUNCULNYA DARI ATAS -->
 <div class="card hidden" id="main">
   <p style="font-size:12px;letter-spacing:2px;color:#aaa">SURAT KE-1 • DIBUKA</p>
   <div class="surat">
@@ -97,17 +90,16 @@ small{color:#999;font-size:12px}
   </div>
   <div class="btn-area">
     <button class="btn btn-yes" onclick="yes()">Boleh, kalau untuk adikku tersayang 🥰</button>
-    <button class="btn-no" id="noBtn" onclick="pindah()">Maaf, belum bisa</button>
+    <button class="btn-no" id="noBtn" onclick="pindah()">gak mau guweh😱</button>
   </div>
   <small style="display:block;margin-top:20px">Klik salah satu ya kakakku tersayang 🫣.</small>
 </div>
 
-<!-- 3. MAKASIH -->
 <div class="card hidden" id="thanks">
   <div class="hearts">💖💙🤍</div>
-  <h1>Waduh terimakasih yang mulia<br><span>kakaku tersayanggg 😛.</span></h1>
+  <h1>Waduh terimakasih yang mulia ratu👑<br><span>kakaku tersayanggg 😛.</span></h1>
   <p style="margin-top:10px">Kakak terbaik sedunia.<br>kamu lah penyelamat hidupku makasih bosskuu semoga panjang umur boskuu maksih banggg ohh iyaa banggg🖐️.</p>
-  <div class="count">Masuk ke WA dalam <br><b id="angka">5</b><br>ohh iyaa bang makasih bwangg🖐️</div>
+  <div class="count">Masuk ke WA dalam <br><b id="angka">10</b><br>ohh iyaa bang makasih bwangg🖐️</div>
   <p style="margin-top:12px;font-size:12px;color:#aaa">— Adikmu</p>
 </div>
 
@@ -128,20 +120,19 @@ const warna = [
   "linear-gradient(90deg,#f78fb3,#ff5da2)",
   "linear-gradient(90deg,#e17055,#fdcb6e)"
 ];
-// KABUR KE ATAS - TENGAH - ATAS - BAWAH - TENGAH - BAWAH - SETERUSNYA, KE SELURUH KARTU
 const pola = [
-  {left:'60%',top:'20px'},   // 1. ke ATAS
-  {left:'5%',top:'300px'},   // 2. ke TENGAH
-  {left:'55%',top:'10px'},   // 3. ke ATAS lagi
-  {left:'10%',top:'550px'},  // 4. ke BAWAH
-  {left:'65%',top:'280px'},  // 5. ke TENGAH lagi
-  {left:'5%',top:'600px'},   // 6. ke BAWAH lagi
-  {left:'35%',top:'30px'},   // 7. ke ATAS lagi
-  {left:'70%',top:'450px'},  // 8. ke BAWAH
-  {left:'5%',top:'150px'},   // 9. ke TENGAH atas
-  {left:'40%',top:'520px'},  // 10. ke BAWAH
-  {left:'10%',top:'80px'},   // 11. ke ATAS
-  {left:'60%',top:'350px'}   // 12. ke TENGAH, muter terus
+  {left:'60%',top:'20px'},
+  {left:'5%',top:'300px'},
+  {left:'55%',top:'10px'},
+  {left:'10%',top:'550px'},
+  {left:'65%',top:'280px'},
+  {left:'5%',top:'600px'},
+  {left:'35%',top:'30px'},
+  {left:'70%',top:'450px'},
+  {left:'5%',top:'150px'},
+  {left:'40%',top:'520px'},
+  {left:'10%',top:'80px'},
+  {left:'60%',top:'350px'}
 ];
 function tampil(id){
   const el=document.getElementById(id);
@@ -174,7 +165,6 @@ function bukaSurat(){
 }
 function pindah(){
   const btn = document.getElementById('noBtn');
-  // PINDAHIN TOMBOLNYA KE KARTU, BIAR BISA KABUR KE MANA-MANA, BUKAN CUMA DI AREA TOMBOL
   const card = document.getElementById('main');
   if(btn.parentNode !== card){ card.appendChild(btn); }
   btn.classList.add('kabur');
@@ -192,7 +182,7 @@ function pindah(){
 function yes(){
   document.getElementById('main').classList.add('hidden');
   tampil('thanks');
-  let s = 5; const el = document.getElementById('angka');
+  let s = 10; const el = document.getElementById('angka');
   const timer = setInterval(()=>{
     s--; if(s>0){el.innerText=s;} else { clearInterval(timer); const text="sitok la ambek"; window.location.href=`https://wa.me/6285393659857?text=${encodeURIComponent(text)}`; }
   },1000);
