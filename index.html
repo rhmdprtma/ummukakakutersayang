@@ -10,7 +10,7 @@ body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:c
 .blob{position:fixed;border-radius:50%;filter:blur(50px);opacity:.7;z-index:0}
 .b1{width:220px;height:220px;background:#ff8fbc;top:-40px;left:-40px}
 .b2{width:240px;height:240px;background:#7ec8ff;bottom:-60px;right:-40px}
-.card{position:relative;z-index:2;max-width:430px;width:100%;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:28px;padding:32px 26px;text-align:center;box-shadow:0 20px 50px rgba(150,80,150,.25);border:2px solid #fff;min-height:520px}
+.card{position:relative;z-index:2;max-width:430px;width:100%;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:28px;padding:32px 26px;text-align:center;box-shadow:0 20px 50px rgba(150,80,150,.25);border:2px solid #fff;min-height:520px;overflow:hidden}
 .hidden{display:none}
 .envelope{font-size:78px;animation:float 2s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
@@ -22,12 +22,11 @@ p{color:#555;font-size:15px;line-height:1.7;margin:0}
 .btn-open{background:linear-gradient(90deg,#ff5da2,#4aa8ff);color:#fff;margin-top:24px;box-shadow:0 10px 20px rgba(255,93,162,.4)}
 .btn-kabar{background:#fff;border:2px solid #ffd1e8;color:#ff5da2;margin-top:12px}
 .btn-kabar:active{background:#fff0f7}
-.reason{margin:22px 0;background:linear-gradient(90deg,#fff0f7,#eff8ff);border:1px solid #ffd1e8;border-radius:18px;padding:18px;text-align:left}
-.reason b{font-size:14px}
-.reason span{color:#555;font-size:14px;line-height:1.6;display:block;margin-top:4px}
-.btn-area{position:relative;height:70px;margin-top:18px}
+.btn-area{margin-top:18px}
 .btn-yes{background:linear-gradient(90deg,#ff5da2,#4aa8ff);color:#fff;box-shadow:0 10px 20px rgba(255,93,162,.4)}
-.btn-no{position:absolute;left:50%;transform:translateX(-50%);top:70px;background:#eee;color:#333;padding:12px 20px;font-size:14px;transition:all .2s ease;white-space:nowrap;border-radius:999px;border:0;font-weight:700;cursor:pointer;z-index:10;box-shadow:0 5px 15px rgba(0,0,0,.15)}
+/* AWAL: DIEM DI BAWAH, BUKAN ABSOLUTE */
+.btn-no{display:block;margin:14px auto 0;background:#eee;color:#333;padding:12px 22px;font-size:14px;white-space:nowrap;border-radius:999px;border:0;font-weight:700;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.15);transition:all .2s ease;position:relative;z-index:10}
+.btn-no.kabur{position:absolute;margin:0;left:50%;transform:translateX(-50%)}
 small{color:#999;font-size:12px}
 .fade{animation:fade .5s ease}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -36,13 +35,17 @@ small{color:#999;font-size:12px}
 .count b{font-size:20px;color:#ff5da2}
 .chatbox{background:#f8faff;border:1px solid #e0eaff;border-radius:18px;padding:16px;text-align:left;margin-top:18px}
 .chatbox p{font-size:14px}
+.surat{background:linear-gradient(180deg,#fff0f7,#eff8ff);border:1px solid #ffd1e8;border-radius:20px;padding:22px;text-align:center;margin:20px 0}
+.surat h2{font-size:19px;margin:0 0 10px;color:#2b2b2b}
+.surat h2 span{background:linear-gradient(90deg,#ff5da2,#4aa8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.surat p{font-size:14.5px;line-height:1.8;color:#444}
 </style>
 </head>
 <body>
 <div class="blob b1"></div><div class="blob b2"></div>
 
-<!-- 1. PEMBUKAAN - BASA BASI NANYA KABAR -->
-<div class="card" id="opening" style="min-height:auto">
+<!-- 1. PEMBUKAAN - KATA-KATA LU -->
+<div class="card" id="opening" style="min-height:auto;overflow:visible">
   <div class="badge">✦ ADA PESAN MASUK ✦</div>
   <div class="envelope" style="margin-top:18px">💌</div>
   <h1>Halo <span>Kakaku Tercantik.</span></h1>
@@ -61,32 +64,34 @@ small{color:#999;font-size:12px}
   <p style="margin-top:14px;font-size:12px;color:#aaa">Dari: Adikmu yang tersayang • 🎵 </p>
 </div>
 
-<!-- 1B. BALASAN BASA BASI -->
-<div class="card hidden" id="balasan" style="min-height:auto">
+<!-- 1B. BALASAN - KATA-KATA LU -->
+<div class="card hidden" id="balasan" style="min-height:auto;overflow:visible">
   <div class="hearts">💖</div>
   <h1 id="judulBalasan">Syukurlah...</h1>
   <p id="teksBalasan" style="margin-top:10px"></p>
   <button class="btn btn-open" onclick="bukaSurat()">Lanjut, ada yang mau adikmu omongin →</button>
 </div>
 
-<!-- 2. ISI SURAT -->
+<!-- 2. ISI - UDAH GUA GABUNG JADI 1 SURAT, KATA-KATA LU SEMUA -->
 <div class="card hidden" id="main">
   <p style="font-size:12px;letter-spacing:2px;color:#aaa">SURAT KE-1 • DIBUKA</p>
-  <h1>Halo <span>Kakaku tercantik.</span></h1>
-  <p style="margin-top:8px">ehemm, alamak bantuk lagi guweh 🤧, ummu yg cantik yang imut yang tersyaang manusia paling cantik nan sabar adakah sedikit rezeki untuk adikmu tersayang ini.</p>
-  <div class="reason">
-    <b>Surat Untuk Ummu 💌</b>
-    <span>Untuk Ummu yang paling cantik, paling baik, paling imut, paling sabar, paling pengertian, paling penyayang sedunia. Yang kalau senyum tuh dunia langsung cerah. Yang hatinya lembut banget. Pokoknya Ummu adalah kakakku terbaik yang pernah ada intinya yang paling paling 😛😛😛💖. Jadi... adakah sedikit rezeki untuk adikmu yang tersayang ini?</span>
+  <div class="surat">
+    <h2>Surat Untuk <span>Ummu 💌</span></h2>
+    <p>
+      ehem, alamak bantuk lagi guweh 🤧, ummu yg cantik yang imut yang tersyaang manusia paling cantik nan sabar adakah sedikit rezeki untuk adikmu tersayang ini.<br><br>
+      Untuk Ummu yang paling cantik, paling baik, paling imut, paling sabar, paling pengertian, paling penyayang sedunia. Yang kalau senyum tuh dunia langsung cerah. Yang hatinya lembut banget. Pokoknya Ummu adalah kakakku terbaik yang pernah ada intinya yang paling paling 😛😛😛💖. Jadi... adakah sedikit rezeki untuk adikmu yang tersayang ini?
+    </p>
   </div>
-  <div class="btn-area" id="area">
+  <div class="btn-area">
     <button class="btn btn-yes" onclick="yes()">Boleh, kalau untuk adikku tersayang 🥰</button>
+    <!-- CUMA onclick, GAK ADA onmouseover LAGI -->
+    <button class="btn-no" id="noBtn" onclick="pindah()">Maaf, belum bisa</button>
   </div>
-  <button class="btn-no" id="noBtn" onmouseover="pindah()" ontouchstart="pindah()" onclick="pindah()">Maaf, belum bisa</button>
   <small style="display:block;margin-top:20px">Klik salah satu ya kakakku tersayang 🫣.</small>
 </div>
 
-<!-- 3. MAKASIH + AUTO WA 5 DETIK -->
-<div class="card hidden" id="thanks" style="min-height:auto">
+<!-- 3. MAKASIH - KATA-KATA LU -->
+<div class="card hidden" id="thanks" style="min-height:auto;overflow:visible">
   <div class="hearts">💖💙🤍</div>
   <h1>Makasih banyak<br><span>kakaku tersayanggg 😛.</span></h1>
   <p style="margin-top:10px">Kakak terbaik sedunia.<br>kamu lah oenyelamat hidupku makasih bosskuu semoga panjang umur boskuu maksih banggg ohh iyaa banggg🖐️.</p>
@@ -94,7 +99,6 @@ small{color:#999;font-size:12px}
   <p style="margin-top:12px;font-size:12px;color:#aaa">— Adikmu</p>
 </div>
 
-<!-- MUSIK DARI FILE LU SENDIRI -->
 <audio id="lagu" loop>
   <source src="musik.mp3" type="audio/mpeg">
 </audio>
@@ -126,6 +130,7 @@ function bukaSurat(){
 }
 function pindah(){
   const btn = document.getElementById('noBtn');
+  btn.classList.add('kabur');
   const pos = pola[step % pola.length]; step++;
   btn.style.left = pos.left; btn.style.top = pos.top; btn.style.transform = 'none';
   btn.innerText = ejekan[(step-1) % ejekan.length];
