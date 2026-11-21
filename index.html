@@ -3,53 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Kakaku tersayang</title>
+<title>Untuk Kakakku tersayang</title>
 <style>
-*{box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
-body{margin:0;background:#f8f7f4;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.card{max-width:420px;width:100%;background:#fff;border-radius:20px;padding:32px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.08);border:1px solid #eee}
-h1{font-size:22px;margin:0;color:#1a1a1a}
-p{color:#666;font-size:15px;line-height:1.6}
-.reason{background:#f8f7f4;border-radius:14px;padding:16px;text-align:left;font-size:14px;color:#333;margin:20px 0}
-.btn-area{position:relative;height:120px;margin-top:10px}
-button{padding:14px 22px;border:0;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer}
-.btn-yes{background:#1a1a1a;color:white;width:100%}
-.btn-no{background:#e5e5e5;color:#333;position:absolute;left:0;top:60px;transition:all .15s ease;white-space:nowrap}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#ffb6d9 0%,#ffffff 45%,#a5d8ff 100%);overflow:hidden}
+.blob{position:fixed;border-radius:50%;filter:blur(50px);opacity:.7;z-index:0}
+.b1{width:220px;height:220px;background:#ff8fbc;top:-40px;left:-40px}
+.b2{width:240px;height:240px;background:#7ec8ff;bottom:-60px;right:-40px}
+.card{position:relative;z-index:2;max-width:430px;width:100%;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:28px;padding:32px 26px;text-align:center;box-shadow:0 20px 50px rgba(150,80,150,.25);border:2px solid #fff;min-height:520px}
+.hidden{display:none}
+.envelope{font-size:78px;animation:float 2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+h1{font-size:24px;margin:14px 0 8px;color:#2b2b2b;line-height:1.3}
+h1 span{background:linear-gradient(90deg,#ff5da2,#4aa8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+p{color:#555;font-size:15px;line-height:1.7;margin:0}
+.badge{display:inline-block;background:linear-gradient(90deg,#ffd1e8,#cdeaff);color:#7a2a5a;font-size:12px;font-weight:800;padding:7px 14px;border-radius:99px}
+.btn{width:100%;padding:16px;border:0;border-radius:999px;font-weight:800;cursor:pointer;font-size:15px}
+.btn-open{background:linear-gradient(90deg,#ff5da2,#4aa8ff);color:#fff;margin-top:24px;box-shadow:0 10px 20px rgba(255,93,162,.4)}
+.btn-kabar{background:#fff;border:2px solid #ffd1e8;color:#ff5da2;margin-top:12px}
+.btn-kabar:active{background:#fff0f7}
+.reason{margin:22px 0;background:linear-gradient(90deg,#fff0f7,#eff8ff);border:1px solid #ffd1e8;border-radius:18px;padding:18px;text-align:left}
+.reason b{font-size:14px}
+.reason span{color:#555;font-size:14px;line-height:1.6;display:block;margin-top:4px}
+.btn-area{position:relative;height:70px;margin-top:18px}
+.btn-yes{background:linear-gradient(90deg,#ff5da2,#4aa8ff);color:#fff;box-shadow:0 10px 20px rgba(255,93,162,.4)}
+.btn-no{position:absolute;left:50%;transform:translateX(-50%);top:70px;background:#eee;color:#333;padding:12px 20px;font-size:14px;transition:all .2s ease;white-space:nowrap;border-radius:999px;border:0;font-weight:700;cursor:pointer;z-index:10;box-shadow:0 5px 15px rgba(0,0,0,.15)}
 small{color:#999;font-size:12px}
+.fade{animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.hearts{font-size:28px;letter-spacing:8px}
+.count{margin-top:18px;background:#f0f7ff;border:1px solid #cdeaff;padding:12px;border-radius:14px;font-size:13px;color:#4a7ab5;font-weight:700}
+.count b{font-size:20px;color:#ff5da2}
+.chatbox{background:#f8faff;border:1px solid #e0eaff;border-radius:18px;padding:16px;text-align:left;margin-top:18px}
+.chatbox p{font-size:14px}
 </style>
 </head>
 <body>
-<div class="card">
-<h1>Halo Kakaku tercantik.</h1>
-<p>ehemm, alamak bantuk guweh🤧, ummu yg cantik yang imut yang manusia paling cantik nan sabar adakah sedikit rezeki untuk adikmu tersayang ini🫣.</p>
-<div class="reason">
-<b>Keperluan:</b><br>
-adakah🤔.<br><br>
-Makasih banyak kakaku tersayanggg😘.
-<br><br>
-— Adikmu
+<div class="blob b1"></div><div class="blob b2"></div>
+
+<!-- 1. PEMBUKAAN - BASA BASI NANYA KABAR -->
+<div class="card" id="opening" style="min-height:auto">
+  <div class="badge">✦ ADA PESAN MASUK ✦</div>
+  <div class="envelope" style="margin-top:18px">💌</div>
+  <h1>Halo <span>Kakaku Tercantik.</span></h1>
+  <p>ohokkk🤧, aduh batuk guweh...</p>
+  <div class="chatbox">
+    <p><b>Adikmu:</b><br>
+    hallo kakaku tersayang, apa kabar hari ini? 🤔<br>
+    Udah makan belum? Kerjaan aman kah?<br>
+    Jangan capek-capek ya kakakku tersayang😘, jaga kesehatan.<br><br>
+    Adikmu ini hanya mengingatkam saja soal kesehetan lu karna adikmu ini sangat sayang kepada kakak satu-satunya nya yang guwe sayangg😛.</p>
+  </div>
+  <p style="margin-top:16px;font-weight:700;color:#2b2b2b">Kakak hari ini gimana?</p>
+  <button class="btn btn-kabar" onclick="kabar('Baik, alhamdulillah 😊')">Baik, alhamdulillah 😊</button>
+  <button class="btn btn-kabar" onclick="kabar('Capek banget hari ini 🥲')">Capek banget hari ini 🥲</button>
+  <button class="btn btn-kabar" onclick="kabar('Biasa aja, kenapa? 🤨')">Biasa aja, kenapa? 🤨</button>
+  <p style="margin-top:14px;font-size:12px;color:#aaa">Dari: Adikmu yang tersayang • 🎵 </p>
 </div>
-<div class="btn-area" id="area">
-<button class="btn-yes" onclick="yes()">Boleh, kalau untuk adikku😘</button>
-<button class="btn-no" id="noBtn" onmouseover="pindah()" ontouchstart="pindah()" onclick="pindah()">Maaf, belum bisa</button>
+
+<!-- 1B. BALASAN BASA BASI -->
+<div class="card hidden" id="balasan" style="min-height:auto">
+  <div class="hearts">💖</div>
+  <h1 id="judulBalasan">Syukurlah...</h1>
+  <p id="teksBalasan" style="margin-top:10px"></p>
+  <button class="btn btn-open" onclick="bukaSurat()">Lanjut, ada yang mau adikmu omongin →</button>
 </div>
-<small>Klik salah satu ya kakakku tersayang😘.</small>
+
+<!-- 2. ISI SURAT -->
+<div class="card hidden" id="main">
+  <p style="font-size:12px;letter-spacing:2px;color:#aaa">SURAT KE-1 • DIBUKA</p>
+  <h1>Halo <span>Kakaku tercantik.</span></h1>
+  <p style="margin-top:8px">ehemm, alamak bantuk lagi guweh 🤧, ummu yg cantik yang imut yang tersyaang manusia paling cantik nan sabar adakah sedikit rezeki untuk adikmu tersayang ini.</p>
+  <div class="reason">
+    <b>Surat Untuk Ummu 💌</b>
+    <span>Untuk Ummu yang paling cantik, paling baik, paling imut, paling sabar, paling pengertian, paling penyayang sedunia. Yang kalau senyum tuh dunia langsung cerah. Yang hatinya lembut banget. Pokoknya Ummu adalah kakakku terbaik yang pernah ada intinya yang paling paling 😛😛😛💖. Jadi... adakah sedikit rezeki untuk adikmu yang tersayang ini?</span>
+  </div>
+  <div class="btn-area" id="area">
+    <button class="btn btn-yes" onclick="yes()">Boleh, kalau untuk adikku tersayang 🥰</button>
+  </div>
+  <button class="btn-no" id="noBtn" onmouseover="pindah()" ontouchstart="pindah()" onclick="pindah()">Maaf, belum bisa</button>
+  <small style="display:block;margin-top:20px">Klik salah satu ya kakakku tersayang 🫣.</small>
 </div>
+
+<!-- 3. MAKASIH + AUTO WA 5 DETIK -->
+<div class="card hidden" id="thanks" style="min-height:auto">
+  <div class="hearts">💖💙🤍</div>
+  <h1>Makasih banyak<br><span>kakaku tersayanggg 😛.</span></h1>
+  <p style="margin-top:10px">Kakak terbaik sedunia.<br>kamu lah oenyelamat hidupku makasih bosskuu semoga panjang umur boskuu maksih banggg ohh iyaa banggg🖐️.</p>
+  <div class="count">Masuk ke WA dalam <br><b id="angka">5</b><br>ohh iyaa bang makasih bwangg🖐️</div>
+  <p style="margin-top:12px;font-size:12px;color:#aaa">— Adikmu</p>
+</div>
+
+<!-- MUSIK DARI FILE LU SENDIRI -->
+<audio id="lagu" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+let step = 0;
+const ejekan = ["Eh, gak kena 😝","Yakin mau nolak?","Ayo lah kangjeng ratu 🫣","Waduh kabur lagi!","Gak bisa nolak nich😛","Ummu imoet, tekan aja bosku😜","Kecepetan kah?","Coba lagi kumkum🤔","Udah lah, pencet yang pink aja","Capek gak ngejar-ngejar? 😂"];
+const pola = [{left:'62%',top:'45px'},{left:'5%',top:'230px'},{left:'55%',top:'430px'},{left:'10%',top:'450px'},{left:'65%',top:'180px'},{left:'5%',top:'50px'},{left:'35%',top:'470px'},{left:'70%',top:'300px'},{left:'5%',top:'340px'},{left:'40%',top:'15px'}];
+function kabar(pilihan){
+  document.getElementById('opening').classList.add('hidden');
+  const b = document.getElementById('balasan');
+  b.classList.remove('hidden'); b.classList.add('fade');
+  document.getElementById('lagu').play().catch(()=>{});
+  if(pilihan.includes('Baik')){
+    document.getElementById('judulBalasan').innerText = "Syukurlah kalau kanjeng ratu baik baik sahaja 😇";
+    document.getElementById('teksBalasan').innerText = "Alhamdulillah kalau kakakku baik. Adikmu ini juga ikut seneng dengernya. Semoga terus sehat dan rezekinya lancar 😋. Eh, ngomong-ngomong... ada yang mau adikmu omongin nih, penting dikit.";
+  } else if(pilihan.includes('Capek')){
+    document.getElementById('judulBalasan').innerText = "Ya ampun, kasian banget kakakku yaudah 50k dulu biar gak stres😇";
+    document.getElementById('teksBalasan').innerText = "ternyata kanjeng ratu bisa capek ya? Sini adikmu temenin ngobrol bentar biar gak stres. Jangan dipaksain terus, kanjeng ratu tuh harus istirahat juga. Eh tapi... ada yang mau adikmu omongin nih, bentar aja.";
+  } else {
+    document.getElementById('judulBalasan').innerText = "aduhhh blunder lagi blunder lagi 🫣";
+    document.getElementById('teksBalasan').innerText = "Hahaha udah curiga ya? Iya nih, adikmu ini emang ada mau ngomong sesuatu. Tapi sumpah bukan yang aneh-aneh . Lanjut ya 🫣🫣, bentar aja.";
+  }
+}
+function bukaSurat(){
+  document.getElementById('balasan').classList.add('hidden');
+  const m = document.getElementById('main');
+  m.classList.remove('hidden'); m.classList.add('fade');
+}
 function pindah(){
   const btn = document.getElementById('noBtn');
-  const area = document.getElementById('area');
-  const maxX = area.clientWidth - btn.offsetWidth;
-  const maxY = 70;
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-  btn.style.left = x + 'px';
-  btn.style.top = y + 'px';
+  const pos = pola[step % pola.length]; step++;
+  btn.style.left = pos.left; btn.style.top = pos.top; btn.style.transform = 'none';
+  btn.innerText = ejekan[(step-1) % ejekan.length];
 }
 function yes(){
-  const text = "sitok la ambek";
-  // GANTI NOMOR WA LU DI SINI
-  window.open(`https://wa.me/6285393659857?text=${encodeURIComponent(text)}`, '_blank');
+  document.getElementById('main').classList.add('hidden');
+  const t = document.getElementById('thanks');
+  t.classList.remove('hidden'); t.classList.add('fade');
+  let s = 5; const el = document.getElementById('angka');
+  const timer = setInterval(()=>{
+    s--; if(s>0){el.innerText=s;} else { clearInterval(timer); const text="sitok la ambek"; window.location.href=`https://wa.me/6285393659857?text=${encodeURIComponent(text)}`; }
+  },1000);
 }
 </script>
 </body>
