@@ -24,10 +24,11 @@ p{color:#555;font-size:15px;line-height:1.7;margin:0}
 .btn-open{background:linear-gradient(90deg,#ff5da2,#4aa8ff);color:#fff;margin-top:24px;box-shadow:0 10px 20px rgba(255,93,162,.4)}
 .btn-kabar{background:#fff;border:2px solid #ffd1e8;color:#ff5da2;margin-top:12px}
 .btn-kabar:active{background:#fff0f7}
-.btn-area{margin-top:18px}
+.btn-area{margin-top:18px;position:relative;min-height:110px}
 .btn-yes{background:linear-gradient(90deg,#ff5da2,#4aa8ff);color:#fff;box-shadow:0 10px 20px rgba(255,93,162,.4)}
-.btn-no{display:block;margin:14px auto 0;background:#eee;color:#333;padding:12px 22px;font-size:14px;white-space:nowrap;border-radius:999px;border:0;font-weight:700;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.15);transition:all .2s ease;position:relative;z-index:10}
-.btn-no.kabur{position:absolute;margin:0;left:50%;transform:translateX(-50%)}
+/* INI DOANG YANG GUA UBAH: TOMBOL MAAF JADI BERWARNA, GAK POLOS */
+.btn-no{display:block;margin:14px auto 0;background:linear-gradient(90deg,#ffe066,#ff9f43);color:#7a2a00;padding:12px 22px;font-size:14px;white-space:nowrap;border-radius:999px;border:2px solid #fff;font-weight:800;cursor:pointer;box-shadow:0 8px 18px rgba(255,159,67,.45);transition:all .18s ease;position:relative;z-index:20;touch-action:manipulation}
+.btn-no.kabur{position:absolute;margin:0;left:50%;transform:translateX(-50%);z-index:30}
 small{color:#999;font-size:12px}
 .hearts{font-size:28px;letter-spacing:8px}
 .count{margin-top:18px;background:#f0f7ff;border:1px solid #cdeaff;padding:12px;border-radius:14px;font-size:13px;color:#4a7ab5;font-weight:700}
@@ -66,7 +67,7 @@ small{color:#999;font-size:12px}
     <p><b>Adikmu:</b><br>
     hallo kakaku tersayang, apa kabar hari ini? 🤔<br>
     Udah makan belum? Kerjaan aman kah?<br>
-    Jangan capek-capek ya kakakku tersayang😘, jaga kesehatan.<br><br>
+    Jangan capek-capek ya kakakku tersayang, jaga kesehatan😘.<br><br>
     Adikmu ini hanya mengingatkam saja soal kesehetan lu karna adikmu ini sangat sayang kepada kakak satu-satunya nya yang guwe sayangg😛.</p>
   </div>
   <p style="margin-top:16px;font-weight:700;color:#2b2b2b">Kakak hari ini gimana?</p>
@@ -114,7 +115,26 @@ small{color:#999;font-size:12px}
 <script>
 let step = 0;
 const ejekan = ["Eh, gak kena 😝","Yakin mau nolak?","Ayo lah kangjeng ratu 🫣","Waduh kabur lagi!","Gak bisa nolak nich😛","Ummu imoet, tekan aja bosku😜","Kecepetan kah?","Coba lagi kumkum🤔","Udah lah, pencet yang pink aja","Capek gak ngejar-ngejar? 😂"];
-const pola = [{left:'62%',top:'45px'},{left:'5%',top:'230px'},{left:'55%',top:'430px'},{left:'10%',top:'450px'},{left:'65%',top:'180px'},{left:'5%',top:'50px'},{left:'35%',top:'470px'},{left:'70%',top:'300px'},{left:'5%',top:'340px'},{left:'40%',top:'15px'}];
+// INI DOANG YANG GUA TAMBAH: WARNA BUAT EJEKAN
+const warna = [
+  "linear-gradient(90deg,#ff5da2,#ff8fbc)",
+  "linear-gradient(90deg,#4aa8ff,#7ec8ff)",
+  "linear-gradient(90deg,#a55eea,#d980fa)",
+  "linear-gradient(90deg,#ff9f43,#ffe066)",
+  "linear-gradient(90deg,#20bf6b,#26de81)",
+  "linear-gradient(90deg,#eb3b5a,#fc5c65)",
+  "linear-gradient(90deg,#8854d0,#a55eea)",
+  "linear-gradient(90deg,#2bcbba,#45aaf2)",
+  "linear-gradient(90deg,#f78fb3,#ff5da2)",
+  "linear-gradient(90deg,#e17055,#fdcb6e)"
+];
+// POSISI KABUR DIPERKECIL BIAR TETEP DI DALEM KARTU, GAK HILANG
+const pola = [
+  {left:'0%',top:'70px'},{left:'55%',top:'70px'},{left:'25%',top:'95px'},
+  {left:'60%',top:'10px'},{left:'0%',top:'10px'},{left:'35%',top:'70px'},
+  {left:'65%',top:'95px'},{left:'10%',top:'95px'},{left:'45%',top:'70px'},
+  {left:'20%',top:'10px'}
+];
 function tampil(id){
   const el=document.getElementById(id);
   el.classList.remove('hidden');
@@ -147,9 +167,16 @@ function bukaSurat(){
 function pindah(){
   const btn = document.getElementById('noBtn');
   btn.classList.add('kabur');
-  const pos = pola[step % pola.length]; step++;
-  btn.style.left = pos.left; btn.style.top = pos.top; btn.style.transform = 'none';
-  btn.innerText = ejekan[(step-1) % ejekan.length];
+  const pos = pola[step % pola.length];
+  const teks = ejekan[step % ejekan.length];
+  const w = warna[step % warna.length];
+  step++;
+  btn.style.left = pos.left;
+  btn.style.top = pos.top;
+  btn.style.transform = 'none';
+  btn.style.background = w;
+  btn.style.color = '#fff';
+  btn.innerText = teks;
 }
 function yes(){
   document.getElementById('main').classList.add('hidden');
